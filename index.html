@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flip Cards Game</title>
+
+ <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2 class="heading">FLIP THE CARDS</h2>
+        <div class="cards">
+
+
+            <div class="card" cartoon="minions"> 
+                <img src="./images/minions.png" alt="" />
+            </div>
+
+        <div class="card" cartoon="dora"> 
+        <img src="./images/dora.png" alt="" />
+        </div>
+
+        <div class="card" cartoon="panda">
+        <img src="./images/kung fu panda.png" alt="" />
+        </div>
+
+        <div class="card" cartoon="dog">
+            <img src="./images/dog.png"  alt=""/>  
+            </div>
+
+        <div class="card" cartoon="mickey">
+            <img src="./images/mickey.png" alt="" />
+        </div>
+
+        <div class="card" cartoon="pika">
+            <img src="./images/pika.png" alt="" />
+        </div>
+
+
+
+        <div class="card" cartoon="jerry">
+            <img src="./images/jerry.png" alt="" />
+            </div>
+
+        <div class="card" cartoon="winnie">
+            <img src="./images/winnie.png" alt="" />
+        </div>
+
+        <div class="card" cartoon="dog">
+        <img src="./images/dog.png"  alt=""/>  
+        </div>
+    
+        <div class="card" cartoon="panda">
+        <img src="./images/kung fu panda.png" alt="" />
+        </div>
+
+        <div class="card" cartoon="dora"> 
+            <img src="./images/dora.png" alt="" />
+            </div>
+    
+        <div class="card" cartoon="mickey">
+        <img src="./images/mickey.png" alt="" />
+        </div>
+
+        <div class="card" cartoon="jerry">
+            <img src="./images/jerry.png" alt="" />
+            </div>
+    
+        <div class="card" cartoon="minions"> 
+        <img src="./images/minions.png" alt="" />
+        </div>
+
+    
+        <div class="card" cartoon="pika">
+        <img src="./images/pika.png" alt="" />
+        </div>
+
+        <div class="card" cartoon="winnie">
+        <img src="./images/winnie.png" alt="" />
+        </div>
+        
+        </div>
+    </div>
+
+    <script>
+        let counter =0;
+        let a= "";
+        let b = "";
+
+        //here a is for first selection and b for second one
+
+        const cards= document.querySelectorAll(".cards .card");
+        cards.forEach((card) => {
+        card.addEventListener("click", () => {
+            
+            card.classList.add("clicked");
+
+            if(counter == 0)
+            {
+                a=card.getAttribute("cartoon");
+                counter++;
+            }
+            else{
+                b=card.getAttribute("cartoon");
+                counter = 0;
+
+                if(a === b)
+                {
+                    const correctCards = document.querySelectorAll(".card[cartoon='" + a + "']");
+
+                    correctCards[0].classList.add("checked");
+                    correctCards[0].classList.remove("clicked");
+                    correctCards[1].classList.add("checked");
+                    correctCards[1].classList.remove("clicked");
+                }
+                else{
+                    const incorrectCards = document.querySelectorAll(".card.clicked");
+
+                    incorrectCards[0].classList.add("shake");
+                    incorrectCards[1].classList.add("shake");
+
+
+                    setTimeout(() => {
+                        incorrectCards[0].classList.remove("shake");
+                        incorrectCards[0].classList.remove("clicked");
+                        incorrectCards[1].classList.remove("shake");
+                        incorrectCards[1].classList.remove("clicked");
+
+                    }, 800);
+                }
+            }
+        });
+            
+        });
+    </script>
+</body>
+</html>
